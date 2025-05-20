@@ -1,0 +1,21 @@
+name: Despliegue Automático
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Construir imagen Docker
+      run: docker build -t mi-web:latest .
+
+    # Aquí agregarías pasos para subir la imagen a un registry o desplegar
+    - name: Fin del workflow
+      run: echo "Despliegue completo"
